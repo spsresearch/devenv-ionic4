@@ -14,7 +14,7 @@ RUN mkdir /workspace && mkdir -p /builder/home
 WORKDIR /workspace
 COPY .npmrc /builder/home
 # Install CLIs and required utilities
-RUN npm install -g npm@6.1 @angular/cli@6.0 ionic cloc@latest ts-node firebase-tools
+RUN npm install -g npm@6.1 @angular/cli@6.0 ionic cloc@latest ts-node firebase-tools typescript
 ENV PATH="/builder/home/.npm-packages/bin:${PATH}"
 ENV HOME=/builder/home
 EXPOSE 4200 9876 9222 8888 9005
