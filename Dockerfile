@@ -14,7 +14,7 @@ RUN mkdir /workspace && mkdir -p /builder/home
 WORKDIR /workspace
 COPY .npmrc /builder/home
 # Install CLIs and required utilities
-RUN npm install -g npm@6.1 @angular/cli@6.0 ionic cloc@latest firebase-tools smartcrop-cli
+RUN npm install -g npm@6.5 @angular/cli@7.2 ionic cloc@latest firebase-tools smartcrop-cli
 ENV PATH="/builder/home/.npm-packages/bin:${PATH}"
 ENV HOME=/builder/home
 EXPOSE 4200 9876 9222 8888 9005
