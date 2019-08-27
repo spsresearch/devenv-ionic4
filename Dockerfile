@@ -13,17 +13,17 @@ ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 # Install Chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-RUN apt-get update && apt-get install -y google-chrome-stable jq
+RUN apt-get update && apt-get install -y google-chrome-stable jq && rm -rf /var/lib/apt/lists/*
 
 # Set up home dir, workspace and environment for GCB
 RUN mkdir /workspace && mkdir -p /builder/home
 WORKDIR /workspace
-COPY .npmrc /builder/home
-ENV PATH="/builder/home/.npm-packages/bin:${PATH}"
-ENV HOME=/builder/home
 
 # Install CLIs and required utilities
 RUN npm install -g npm@6.10 @angular/cli@8.2 ionic cloc@latest firebase-tools smartcrop-cli pgb-cli playup
+
+ENV HOME=/builder/home
+
 EXPOSE 4200 9876 9222 8888 9005
 CMD [ "npm", "run" ]
 
