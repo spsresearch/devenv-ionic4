@@ -15,6 +15,9 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
   && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 RUN apt-get update && apt-get install -y google-chrome-stable jq && rm -rf /var/lib/apt/lists/*
 
+# Install the CodeClimate binary
+RUN wget https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -O /usr/bin/cc-test-reporter && chmod +x /usr/bin/cc-test-reporter
+
 # Set up home dir, workspace and environment for GCB
 RUN mkdir /workspace && mkdir -p /builder/home
 WORKDIR /workspace
