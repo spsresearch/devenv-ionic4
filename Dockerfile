@@ -23,7 +23,7 @@ RUN mkdir /workspace && mkdir -p /builder/home
 WORKDIR /workspace
 
 # Install CLIs and required utilities
-RUN npm install -g npm@6.10 @angular/cli@8.2 ionic cloc@latest firebase-tools smartcrop-cli pgb-cli playup
+RUN npm install -g npm@6.10 @angular/cli@8.2 ionic cloc@latest firebase-tools smartcrop-cli pgb-cli playup npkup
 
 ENV HOME=/builder/home
 
